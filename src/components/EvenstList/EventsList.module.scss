@@ -1,0 +1,22 @@
+.eventsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 15px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+.eventItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 15px;
+  border: 1px solid #000;
+}
+.linkGroup {
+  display: flex;
+  justify-content: space-between;
+}

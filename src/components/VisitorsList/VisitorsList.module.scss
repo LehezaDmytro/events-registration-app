@@ -1,0 +1,14 @@
+.visitorsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 240px);
+  gap: 15px;
+}
+
+.visitorItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 15px;
+  border: 1px solid #000;
+}
