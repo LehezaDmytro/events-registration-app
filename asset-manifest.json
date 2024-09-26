@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/events-registration-app/static/css/main.54ab569e.css",
+    "main.js": "/events-registration-app/static/js/main.fda3f7d5.js",
+    "index.html": "/events-registration-app/index.html",
+    "main.54ab569e.css.map": "/events-registration-app/static/css/main.54ab569e.css.map",
+    "main.fda3f7d5.js.map": "/events-registration-app/static/js/main.fda3f7d5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54ab569e.css",
+    "static/js/main.fda3f7d5.js"
+  ]
+}
