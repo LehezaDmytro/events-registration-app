@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import styles from "./RegistrationForm.module.scss";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const RegistrationForm = ({ onHandleSubmit }) => {
+  const [birthDate, setBirthDate] = useState(new Date());
   const navigate = useNavigate();
 
   const submitForm = (e) => {
@@ -10,7 +15,7 @@ const RegistrationForm = ({ onHandleSubmit }) => {
     onHandleSubmit({
       fullName: form.elements.name.value,
       email: form.elements.email.value,
-      birthDate: form.elements.date.value,
+      birthDate,
       source: form.elements.source.value,
     });
 
@@ -26,7 +31,15 @@ const RegistrationForm = ({ onHandleSubmit }) => {
       <label htmlFor="email">Email</label>
       <input type="email" id="email" name="email" required />
       <label htmlFor="date">Date of birth</label>
-      <input type="date" id="date" required />
+      <DatePicker
+        showMonthDropdown
+        showYearDropdown
+        scrollableYearDropdown
+        yearDropdownItemNumber={70}
+        dateFormat="dd-MM-yyyy"
+        selected={birthDate}
+        onChange={(date) => setBirthDate(date)}
+      />
       <p>Where did you hear about this event?</p>
       <label>
         <input type="radio" name="source" value="Social media" defaultChecked />

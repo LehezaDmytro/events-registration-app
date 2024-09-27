@@ -6,10 +6,10 @@ const eventsInstance = axios.create({
   baseURL,
 });
 
-export const getEvents = async (page = 1, limit = 6) => {
+export const getEvents = async (page = 1, limit = 6, sortBy = "none") => {
   try {
     const { data } = await eventsInstance.get(
-      `/events/?page=${page}&limit=${limit}`
+      `/events/?page=${page}&limit=${limit}&sortBy=${sortBy}`
     );
     return data;
   } catch (error) {

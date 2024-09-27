@@ -3,9 +3,10 @@
   flex-direction: column;
 
   max-width: 500px;
-}
 
-.error {
-  color: red;
-  font-size: 12px;
+  div {
+    input {
+      width: 100%;
+    }
+  }
 }
