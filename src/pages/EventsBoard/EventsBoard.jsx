@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import EventsList from "../../components/EvenstList/EventsList";
 import Filter from "../../components/Filter/Filter";
 import { RotatingLines } from "react-loader-spinner";
@@ -21,13 +21,13 @@ const EventBoard = () => {
     setHasMore(true);
   };
 
-  const loadMoreEvents = async () => {
+  const loadMoreEvents = useCallback(async () => {
     if (isLoading || !hasMore) return;
 
     try {
       setLoading(true);
-      const { data, total } = await getEvents(page, undefined, filterValue);
-      if (data.length === 0 || events.length + data.length >= total) {
+      const { data } = await getEvents(page, undefined, filterValue);
+      if (data.length === 0) {
         setHasMore(false);
       } else {
         setEvents((prevEvents) => {
@@ -46,7 +46,10 @@ const EventBoard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filterValue, hasMore, isLoading, page]);
+
+  const loadMoreEventsRef = useRef(loadMoreEvents);
+  loadMoreEventsRef.current = loadMoreEvents;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +61,7 @@ const EventBoard = () => {
         hasMore &&
         !isLoading
       ) {
-        loadMoreEvents();
+        loadMoreEventsRef.current();
       }
     };
 
@@ -79,7 +82,7 @@ const EventBoard = () => {
       setPage(1);
       setHasMore(true);
       setEvents([]);
-      await loadMoreEvents();
+      await loadMoreEventsRef.current();
     };
 
     fetchInitialEvents();
