@@ -1,7 +1,7 @@
 .eventBoard {
   height: calc(100vh - 50px);
   overflow-y: auto;
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
 
 .pagination {
